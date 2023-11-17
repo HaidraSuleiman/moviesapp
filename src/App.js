@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
-function App() {
+import MoviesList from "./MoviesList";
+import NavBar from "./NavBar";
+import Watched from "./Watched";
+
+import { tempMovieData } from "./tempData";
+
+export default function App() {
+  const [movies, setMovies] = useState(tempMovieData);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar movies={movies} />
+      <main className="main">
+        <MoviesList movies={movies} />
+        <Watched />
+      </main>
+    </>
   );
 }
-
-export default App;
